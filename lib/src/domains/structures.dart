@@ -1,7 +1,7 @@
 part of weatherapi_library;
 
 /*
- * A class to represent locations data.
+ * A class to represent a location data.
  */
 class LocationData
 {
@@ -53,7 +53,7 @@ class ConditionData
     ConditionData(this._text, this._icon);
 
     String? get text => _text;
-    String? get icon => '$_defaultRequestProtocol:$_icon';
+    String? get icon => _icon;
 }
 
 /*
@@ -62,10 +62,10 @@ class ConditionData
 class CurrentWeatherData
 {
     final double? _tempC, _windKph, _pressureMb, _precipMm, _feelslikeC, _uv;
-    final ConditionData? _condition;
+    final ConditionData _condition;
     final String? _windDir;
     final int? _humidity, _cloud;
-    final AirQualityData? _airQuality;
+    final AirQualityData _airQuality;
 
     CurrentWeatherData(this._tempC, this._condition, this._windKph,
         this._windDir, this._pressureMb, this._precipMm, this._humidity,
@@ -77,9 +77,9 @@ class CurrentWeatherData
     double? get precipMm => _precipMm;
     double? get feelslikeC => _feelslikeC;
     double? get uv => _uv;
-    ConditionData? get condition => _condition;
+    ConditionData get condition => _condition;
     String? get windDir => _windDir;
     int? get humidity => _humidity;
     int? get cloud => _cloud;
-    AirQualityData? get airQuality => _airQuality;
+    AirQualityData get airQuality => _airQuality;
 }
