@@ -83,3 +83,111 @@ class CurrentWeatherData
     int? get cloud => _cloud;
     AirQualityData get airQuality => _airQuality;
 }
+
+/*
+ * A class to represent forecast day condition data.
+ */
+class DayConditionData
+{
+    final String? _icon;
+
+    DayConditionData(this._icon);
+
+    String? get icon => _icon;
+}
+
+/*
+ * A class to represent forecast day data.
+ */
+class DayData
+{
+    final double? _maxtempC, _mintempC, _totalsnowCm;
+    final int? _dailyChanceOfRain;
+    final DayConditionData _condition;
+
+    DayData(this._maxtempC, this._mintempC, this._totalsnowCm,
+        this._dailyChanceOfRain, this._condition);
+
+    double? get maxtempC => _maxtempC;
+    double? get mintempC => _mintempC;
+    double? get totalSnowCm => _totalsnowCm;
+    int? get dailyChanceOfRain => _dailyChanceOfRain;
+    DayConditionData get condition => _condition;
+}
+
+/*
+ * A class to represent forecast astro data.
+ */
+class AstroData
+{
+    final String? _sunrise, _sunset;
+    final int? _isMoonUp, _isSunUp;
+
+    AstroData(this._sunrise, this._sunset, this._isMoonUp, this._isSunUp);
+
+    String? get sunrise => _sunrise;
+    String? get sunset => _sunset;
+    int? get isMoonUp => _isMoonUp;
+    int? get isSunUp => _isSunUp;
+}
+
+/*
+ * A class to represent forecast hour data.
+ */
+class HourData
+{
+    final String? _time;
+    final double? _tempC;
+    final DayConditionData _condition;
+
+    HourData(this._time, this._tempC, this._condition);
+
+    String? get time => _time;
+    double? get tempC => _tempC;
+    DayConditionData get condition => _condition;
+}
+
+/*
+ * A class to represent forecast day data.
+ */
+class ForecastDayData
+{
+    final String? _date;
+    final DayData _day;
+    final AstroData _astro;
+    final List<HourData> _hour;
+
+    ForecastDayData(this._date, this._day, this._astro, this._hour);
+
+    String? get date => _date;
+    DayData get day => _day;
+    AstroData get astro => _astro;
+    List<HourData> get hour => _hour;
+}
+
+/*
+ * A class to represent forecast alert.
+ */
+class AlertData
+{
+    final String? _headline, _msgtype, _severity, _urgency, _areas, _category,
+        _certainty, _event, _note, _effective, _expires, _desc, _instruction;
+
+    AlertData(this._headline, this._msgtype, this._severity, this._urgency,
+        this._areas, this._category, this._certainty, this._event, this._note,
+        this._effective, this._expires, this._desc, this._instruction);
+
+    String? get headline => _headline;
+    String? get msgtype => _msgtype;
+    String? get severity => _severity;
+    String? get urgency => _urgency;
+    String? get areas => _areas;
+    String? get category => _category;
+    String? get certainty => _certainty;
+    String? get event => _event;
+    String? get note => _note;
+    String? get effective => _effective;
+    String? get expires => _expires;
+    String? get desc => _desc;
+    String? get instruction => _instruction;
+}

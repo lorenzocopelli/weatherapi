@@ -23,7 +23,7 @@ class WeatherRequest
 {
     final String _apiKey;
     final Language language;
-    late http.Client _httpClient;
+    late final http.Client _httpClient;
 
     WeatherRequest(this._apiKey, {this.language = Language.english})
     {
@@ -52,6 +52,31 @@ class WeatherRequest
         return RealtimeWeather(jsonResponse!);
     }
 
+    // Fetch Forecast API data by location.
+    Future<ForecastWeather> getForecastWeatherByLocation(double latitude,
+        double longitude, {int forecastDays = 1,
+        bool airQualityIndex = false, bool alerts = false}) async
+    {
+        Map<String, dynamic>? jsonResponse = await _sendRequest(
+            APIType.forecast, latitude: latitude, longitude: longitude,
+            forecastDays: forecastDays, airQualityIndex: airQualityIndex,
+            alerts: alerts);
+
+        return ForecastWeather(jsonResponse!);
+    }
+
+    // Fetch Forecast API data by city name.
+    Future<ForecastWeather> getForecastWeatherByCityName(String cityName,
+        {int forecastDays = 1, bool airQualityIndex = false,
+        bool alerts = false}) async
+    {
+        Map<String, dynamic>? jsonResponse = await _sendRequest(
+            APIType.forecast, cityName: cityName, forecastDays: forecastDays,
+            airQualityIndex: airQualityIndex, alerts: alerts);
+
+        return ForecastWeather(jsonResponse!);
+    }
+
     Future<Map<String, dynamic>?> _sendRequest(APIType apiType,
         {String? cityName, double? latitude, double? longitude,
         bool airQualityIndex = false, int forecastDays = 1,
@@ -59,7 +84,7 @@ class WeatherRequest
     {
         assert((cityName != null && cityName.isNotEmpty) ||
             (latitude != null && longitude != null));
-        assert(forecastDays >= 1 && forecastDays <= 10);
+        assert(forecastDays >= 1 && forecastDays <= 14);
 
         String url = _buildUrl(apiType, cityName, latitude, longitude,
             airQualityIndex, forecastDays, alerts);
@@ -81,7 +106,7 @@ class WeatherRequest
     {
         assert((cityName != null && cityName.isNotEmpty) ||
             (latitude != null && longitude != null));
-        assert(forecastDays >= 1 && forecastDays <= 10);
+        assert(forecastDays >= 1 && forecastDays <= 14);
 
         String url = '${_apiTypeBaseUrls[apiType]}?';
         url += 'key=$_apiKey';

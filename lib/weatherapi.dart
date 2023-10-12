@@ -8,3 +8,4 @@ part 'package:weatherapi/src/languages.dart';
 part 'package:weatherapi/src/weather_request.dart';
 part 'package:weatherapi/src/domains/structures.dart';
 part 'package:weatherapi/src/domains/realtime_weather.dart';
+part 'package:weatherapi/src/domains/forecast_weather.dart';

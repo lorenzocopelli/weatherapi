@@ -5,11 +5,13 @@ part of weatherapi_library;
  */
 class RealtimeWeather
 {
-    late LocationData _location;
-    late CurrentWeatherData _currentWeather;
+    late final LocationData _location;
+    late final CurrentWeatherData _current;
 
     RealtimeWeather(Map<String, dynamic> jsonData)
     {
+        // - Location.
+
         Map<String, dynamic>? jsonLocation = jsonData['location'];
 
         _location = LocationData(
@@ -19,15 +21,24 @@ class RealtimeWeather
             jsonLocation?['localtime_epoch'], jsonLocation?['localtime']
         );
 
+        // - Current.
+
         Map<String, dynamic>? jsonCurrentWeather = jsonData['current'];
-        Map<String, dynamic>? jsonCurrentWeatherCondition = jsonCurrentWeather?['condition'];
+
+        // -- Condition.
+
+        Map<String, dynamic>? jsonCurrentWeatherCondition =
+            jsonCurrentWeather?['condition'];
 
         ConditionData condition = ConditionData(
             jsonCurrentWeatherCondition?['text'],
             jsonCurrentWeatherCondition?['icon']
         );
 
-        Map<String, dynamic>? jsonCurrentWeatherAirQuality = jsonCurrentWeather?['air_quality'];
+        // -- Air Quality.
+
+        Map<String, dynamic>? jsonCurrentWeatherAirQuality =
+            jsonCurrentWeather?['air_quality'];
 
         AirQualityData airQuality = AirQualityData(
             jsonCurrentWeatherAirQuality?['co'],
@@ -40,16 +51,16 @@ class RealtimeWeather
             jsonCurrentWeatherAirQuality?['gb-defra-index']
         );
 
-        _currentWeather = CurrentWeatherData(
+        _current = CurrentWeatherData(
             jsonCurrentWeather?['temp_c'], condition,
             jsonCurrentWeather?['wind_kph'], jsonCurrentWeather?['wind_dir'],
-            jsonCurrentWeather?['pressure_mb'], jsonCurrentWeather?['precip_mm'],
-            jsonCurrentWeather?['humidity'], jsonCurrentWeather?['cloud'],
-            jsonCurrentWeather?['feelslike_c'], jsonCurrentWeather?['uv'],
-            airQuality
+            jsonCurrentWeather?['pressure_mb'],
+            jsonCurrentWeather?['precip_mm'], jsonCurrentWeather?['humidity'],
+            jsonCurrentWeather?['cloud'], jsonCurrentWeather?['feelslike_c'],
+            jsonCurrentWeather?['uv'], airQuality
         );
     }
 
     LocationData get location => _location;
-    CurrentWeatherData get currentWeather => _currentWeather;
+    CurrentWeatherData get current => _current;
 }
