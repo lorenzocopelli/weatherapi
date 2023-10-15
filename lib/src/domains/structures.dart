@@ -166,7 +166,7 @@ class ForecastDayData
 }
 
 /*
- * A class to represent forecast alert.
+ * A class to represent forecast alerts.
  */
 class AlertData
 {
@@ -190,4 +190,25 @@ class AlertData
     String? get expires => _expires;
     String? get desc => _desc;
     String? get instruction => _instruction;
+}
+
+/*
+ * A class to represent search results locations.
+ */
+class LocationResultData
+{
+    final int? _id;
+    final String? _name, _region, _country, _url;
+    final double? _lat, _lon;
+
+    LocationResultData(this._id, this._name, this._region, this._country,
+        this._lat, this._lon, this._url);
+
+    int? get id => _id;
+    String? get name => _name;
+    String? get region => _region;
+    String? get country => _country;
+    String? get url => _url;
+    double? get lat => _lat;
+    double? get lon => _lon;
 }
