@@ -55,10 +55,18 @@ For specific documentation on the Realtime API, see the [WeatherAPI docs](https:
 
 Realtime weather API allows a user to get up to date current weather information. The data is returned as a `RealtimeWeather` object.
 
-The current weather can be queried either through a latitude and longitude or through a city name.
+The current weather can be queried either through a city name or through a latitude and longitude.
 
 ```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+
+String cityName = 'Parma';
+
+RealtimeWeather w = await wr.currentWeatherByCityName(cityName);
+```
+
+```dart
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
 
 double latitude = 44.8;
 double longitude = 10.33;
@@ -66,26 +74,24 @@ double longitude = 10.33;
 RealtimeWeather w = await wr.currentWeatherByLocation(lat, lon);
 ```
 
-```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
-
-String cityName = 'Parma';
-
-RealtimeWeather w = await wr.currentWeatherByCityName(cityName);
-```
-
-For a complete list of all the properties of the [Weather](https://pub.dartlang.org/documentation/weather/latest/weather/Weather-class.html) class, check the [documentation](https://pub.dartlang.org/documentation/weather/latest/weather/Weather-class.html)
-
 ### Forecast API
 
 For specific documentation on the Forecast API, see the [WeatherAPI docs](https://www.weatherapi.com/docs/).
 
 Forecast weather API allows a user to get up to date current weather forecast. The data is returned as a `ForecastWeather` object.
 
-The forecast weather can be queried either through a latitude and longitude or through a city name.
+The forecast weather can be queried either through a city name or a through latitude and longitude.
 
 ```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+
+String cityName = 'Parma';
+
+ForecastWeather f = await wr.forecastWeatherByCityName(cityName);
+```
+
+```dart
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
 
 double latitude = 44.8;
 double longitude = 10.33;
@@ -93,49 +99,45 @@ double longitude = 10.33;
 ForecastWeather f = await wr.forecastWeatherByLocation(lat, lon);
 ```
 
-```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
-
-String cityName = 'Parma';
-
-ForecastWeather f = await wr.forecastWeatherByCityName(cityName);
-```
-
 ### Search API
 
 For specific documentation on the Search API, see the [WeatherAPI docs](https://www.weatherapi.com/docs/).
 
-Search API allows a user to get a list of locations matching a provided search query. The data is returned as a list of `Location` objects.
+Search API allows a user to get a list of locations matching a provided search query. The data is returned as a `SearchResults` object.
 
-The results can be queried either through a latitude and longitude or through a city name.
+The results can be queried either through a city name or through a latitude and longitude.
 
 ```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+
+String cityName = 'Parma';
+
+SearchResults lr = await wr.getResultsByCityName(cityName);
+
+for (LocationResultData location in lr.locations) { /* ... */ }
+```
+
+```dart
+WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
 
 double latitude = 44.8;
 double longitude = 10.33;
 
-List<Location> r = await wr.searchByLocation(lat, lon);
-```
+SearchResults lr = await wr.getResultsByLocation(lat, lon);
 
-```dart
-WeatherRequest wf = WeatherRequest("YOUR_API_KEY");
-
-String cityName = 'Parma';
-
-List<Location> r = await wr.searchByCityName(cityName);
+for (LocationResultData location in lr.locations) { /* ... */ }
 ```
 
 ### Exceptions
 
-An exception will be thrown for the following cases:
+An exception will be thrown in the following cases:
 
-* The provided WeatherAPI key is invalid.
+* The provided WeatherAPI.com key is invalid.
 * A bad response was given by the API.
 
 ### Languages
 
-The following languages are supported:
+The supported languages are as follows:
 
 * `arabic`
 * `bengali`
