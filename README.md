@@ -99,11 +99,11 @@ double longitude = 10.33;
 ForecastWeather f = await wr.forecastWeatherByLocation(lat, lon);
 ```
 
-### Search API
+### Search/Autocomplete API
 
-For specific documentation on the Search API, see the [WeatherAPI docs](https://www.weatherapi.com/docs/).
+For specific documentation on the Search/Autocomplete API, see the [WeatherAPI docs](https://www.weatherapi.com/docs/).
 
-Search API allows a user to get a list of locations matching a provided search query. The data is returned as a `SearchResults` object.
+Search/Autocomplete API allows a user to get a list of locations matching a provided search query. The data is returned as a `SearchResults` object.
 
 The results can be queried either through a city name or through a latitude and longitude.
 

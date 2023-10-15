@@ -80,7 +80,7 @@ class WeatherRequest
         return ForecastWeather(jsonResponse!);
     }
 
-    // Fetch Search API data by location.
+    // Fetch Search/Autocomplete API data by location.
     Future<SearchResults> getResultsByLocation(double latitude,
         double longitude) async
     {
@@ -90,7 +90,7 @@ class WeatherRequest
         return SearchResults(jsonResponse!);
     }
 
-    // Fetch Search API data by city name.
+    // Fetch Search/Autocomplete API data by city name.
     Future<SearchResults> getResultsByCityName(String cityName) async
     {
         List<dynamic>? jsonResponse = await _sendRequest<List<dynamic>>(
