@@ -11,5 +11,8 @@ class WeatherAPIException implements Exception
     WeatherAPIException(this._cause);
 
     @override
-    String toString() => '$runtimeType: $_cause';
+    String toString()
+    {
+        return '$runtimeType: $_cause';
+    }
 }
