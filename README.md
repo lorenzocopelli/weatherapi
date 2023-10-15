@@ -16,7 +16,7 @@ Add the package to your Flutter project by following these steps:
 dependencies:
   flutter:
     sdk: flutter
-  weatherapi: ^1.0.0
+  weatherapi: ^1.0.1
 ```
 4. After adding the dependency, save the `pubspec.yaml` file.
 5. Run `flutter pub get` in your terminal or use the relevant option in your IDE to fetch the new dependency.
