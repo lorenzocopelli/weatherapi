@@ -44,7 +44,7 @@ WeatherRequest wr = new WeatherRequest("YOUR_API_KEY");
 Alternatively, you can also specify a language for the weather results.
 
 ```dart
-WeatherRequest wr = new WeatherRequest("YOUR_API_KEY", language: Language.ITALIAN);
+WeatherRequest wr = new WeatherRequest("YOUR_API_KEY", language: Language.italian);
 ```
 
 For all the supported languages, see the Languages section.
