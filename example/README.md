@@ -1,6 +1,6 @@
 # WeatherAPI example
 
-First you need an API key from WeatherAPI.com, which can be acquired for free [here](https://www.weatherapi.com/signup.aspx/).
+First you need an API key from WeatherAPI.com, which can be acquired for free [here](https://www.weatherapi.com/signup.aspx/). Then, import the library:
 
 ```dart
 import 'package:weatherapi/weatherapi.dart';
