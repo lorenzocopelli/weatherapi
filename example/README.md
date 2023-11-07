@@ -3,54 +3,73 @@
 First you need an API key from WeatherAPI.com, which can be acquired for free [here](https://www.weatherapi.com/signup.aspx/).
 
 ```dart
-import 'package:flutter/foundation.dart';
 import 'package:weatherapi/weatherapi.dart';
+```
 
-void main() async
-{
-    // Create a new request (default language: English).
-    WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
+Create a new request (default language: English):
 
-    String cityName = 'Parma';
-    double latitude = 44.8;
-    double longitude = 10.33;
+```dart
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
+```
 
-    /* Realtime API. */
+Alternatively, you can also specify a language:
 
-    // Get realtime weather by city name.
-    RealtimeWeather realtimeWeatherCN = await wr.getRealtimeWeatherByCityName(cityName);
-    debugPrint('Condition: ${realtimeWeatherCN.current.condition.text}');
+```dart
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY', language: Language.italian);
+```
 
-    // Get realtime weather by latitude and longitude.
-    RealtimeWeather realtimeWeatherLL = await wr.getRealtimeWeatherByLocation(latitude, longitude);
-    debugPrint('Condition: ${realtimeWeatherLL.current.condition.text}');
+Now you can retrieve weather information.
 
-    /* Forecast API. */
+```dart
+String cityName = 'Parma';
+double latitude = 44.8;
+double longitude = 10.33;
+```
 
-    // Get forecast weather by city name.
-    ForecastWeather forecastWeatherCN = await wr.getForecastWeatherByCityName(cityName);
-    debugPrint('Tomorrow sunrise: ${forecastWeatherCN.forecast[1].astro.sunrise}');
+## Realtime API
 
-    // Get forecast weather by latitude and longitude.
-    ForecastWeather forecastWeatherLL = await wr.getForecastWeatherByLocation(latitude, longitude);
-    debugPrint('Tomorrow sunrise: ${forecastWeatherLL.forecast[1].astro.sunrise}');
+Get realtime weather by city name:
 
-    /* Search/Autocomplete API. */
+```dart
+RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByCityName(cityName);
+debugPrint('Condition: ${realtimeWeather.current.condition.text}');
+```
 
-    // Get location results by city name.
-    SearchResults lrCN = await wr.getResultsByCityName(cityName);
-    debugPrint('First result: ${lrCN.locations[0].name}');
+Get realtime weather by latitude and longitude:
 
-    // Get location results by latitude and longitude.
-    SearchResults lrLL = await wr.getResultsByLocation(latitude, longitude);
-    debugPrint('First result: ${lrCN.locations[0].name}');
+```dart
+RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByLocation(latitude, longitude);
+debugPrint('Condition: ${realtimeWeather.current.condition.text}');
+```
 
-    /* Multi-language requests. */
+## Forecast API
 
-    // Create a new request using Italian as language.
-    WeatherRequest wrIT = WeatherRequest('YOUR_API_KEY', language: Language.italian);
-    
-    RealtimeWeather realtimeWeatherIT = await wrIT.getRealtimeWeatherByCityName(cityName);
-    debugPrint('Condition: ${realtimeWeatherIT.current.condition.text}');
-}
+Get forecast weather by city name.
+
+```dart
+ForecastWeather forecastWeather = await wr.getForecastWeatherByCityName(cityName);
+debugPrint('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+```
+
+Get forecast weather by latitude and longitude.
+
+```dart
+ForecastWeather forecastWeather = await wr.getForecastWeatherByLocation(latitude, longitude);
+debugPrint('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+```
+
+## Search/Autocomplete API.
+
+Get location results by city name.
+
+```dart
+SearchResults lr = await wr.getResultsByCityName(cityName);
+debugPrint('First result: ${lr.locations[0].name}');
+```
+
+Get location results by latitude and longitude.
+
+```dart
+SearchResults lr = await wr.getResultsByLocation(latitude, longitude);
+debugPrint('First result: ${lr.locations[0].name}');
 ```
