@@ -1,6 +1,6 @@
 name: weatherapi
 description: A plugin for fetching weather forecasting via WeatherAPI.com. Works for both Android and iOS.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/lorenzocopelli/weatherapi
 
 environment:

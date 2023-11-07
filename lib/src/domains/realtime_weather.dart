@@ -1,8 +1,6 @@
 part of weatherapi_library;
 
-/*
- * A class for storing Realtime API response data.
- */
+/// A class for storing Realtime API response data.
 class RealtimeWeather {
   late final LocationData _location;
   late final CurrentWeatherData _current;

@@ -1,3 +1,8 @@
+## 1.0.2
+
+* Code documentation.
+* Minor changes.
+
 ## 1.0.1
 
 * Minor changes.

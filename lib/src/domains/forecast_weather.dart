@@ -1,8 +1,6 @@
 part of weatherapi_library;
 
-/*
- * A class for storing Forecast API response data.
- */
+/// A class for storing Forecast API response data.
 class ForecastWeather {
   late final LocationData _location;
   late final CurrentWeatherData _current;

@@ -1,6 +1,6 @@
 part of weatherapi_library;
 
-// Types of API calls.
+/// Types of API calls.
 enum APIType { realtime, forecast, search }
 
 // API types URLs.
@@ -10,9 +10,7 @@ Map<APIType, String> _apiTypeBaseUrls = {
   APIType.search: 'https://api.weatherapi.com/v1/search.json'
 };
 
-/*
- * A class for fetching weather data in JSON format.
- */
+/// A class for fetching weather data in JSON format.
 class WeatherRequest {
   final String _apiKey;
   final Language language;
@@ -22,7 +20,7 @@ class WeatherRequest {
     _httpClient = http.Client();
   }
 
-  // Fetch Realtime API data by location.
+  /// Fetch Realtime API data by location.
   Future<RealtimeWeather> getRealtimeWeatherByLocation(
       double latitude, double longitude,
       {bool airQualityIndex = false}) async {
@@ -35,7 +33,7 @@ class WeatherRequest {
     return RealtimeWeather(jsonResponse!);
   }
 
-  // Fetch Realtime API data by city name.
+  /// Fetch Realtime API data by city name.
   Future<RealtimeWeather> getRealtimeWeatherByCityName(String cityName,
       {bool airQualityIndex = false}) async {
     Map<String, dynamic>? jsonResponse =
@@ -45,7 +43,7 @@ class WeatherRequest {
     return RealtimeWeather(jsonResponse!);
   }
 
-  // Fetch Forecast API data by location.
+  /// Fetch Forecast API data by location.
   Future<ForecastWeather> getForecastWeatherByLocation(
       double latitude, double longitude,
       {int forecastDays = 1,
@@ -62,7 +60,7 @@ class WeatherRequest {
     return ForecastWeather(jsonResponse!);
   }
 
-  // Fetch Forecast API data by city name.
+  /// Fetch Forecast API data by city name.
   Future<ForecastWeather> getForecastWeatherByCityName(String cityName,
       {int forecastDays = 1,
       bool airQualityIndex = false,
@@ -77,7 +75,7 @@ class WeatherRequest {
     return ForecastWeather(jsonResponse!);
   }
 
-  // Fetch Search/Autocomplete API data by location.
+  /// Fetch Search/Autocomplete API data by location.
   Future<SearchResults> getResultsByLocation(
       double latitude, double longitude) async {
     List<dynamic>? jsonResponse = await _sendRequest<List<dynamic>>(
@@ -88,7 +86,7 @@ class WeatherRequest {
     return SearchResults(jsonResponse!);
   }
 
-  // Fetch Search/Autocomplete API data by city name.
+  /// Fetch Search/Autocomplete API data by city name.
   Future<SearchResults> getResultsByCityName(String cityName) async {
     List<dynamic>? jsonResponse =
         await _sendRequest<List<dynamic>>(APIType.search, cityName: cityName);

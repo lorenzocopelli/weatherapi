@@ -1,8 +1,6 @@
 part of weatherapi_library;
 
-/*
- * A class for storing Search/Autocomplete API response data.
- */
+/// A class for storing Search/Autocomplete API response data.
 class SearchResults {
   late final List<LocationResultData> _locations;
 

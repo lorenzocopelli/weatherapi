@@ -1,8 +1,6 @@
 part of weatherapi_library;
 
-/*
- * A class to represent a location data.
- */
+/// A class to represent a location data.
 class LocationData {
   final String? _name, _region, _country, _tzId, _localtime;
   final double? _lat, _lon;
@@ -21,9 +19,7 @@ class LocationData {
   int? get localtimeEpoch => _localtimeEpoch;
 }
 
-/*
- * A class to represent air quality data.
- */
+/// A class to represent air quality data.
 class AirQualityData {
   final double? _co, _no2, _o3, _so2, _pm2_5, _pm10;
   final int? _usEpaIndex, _gbDefraIndex;
@@ -41,9 +37,7 @@ class AirQualityData {
   int? get gbDefraIndex => _gbDefraIndex;
 }
 
-/*
- * A class to represent condition data.
- */
+/// A class to represent condition data.
 class ConditionData {
   final String? _text, _icon;
 
@@ -53,9 +47,7 @@ class ConditionData {
   String? get icon => _icon;
 }
 
-/*
- * A class to represent current weather data.
- */
+/// A class to represent current weather data.
 class CurrentWeatherData {
   final double? _tempC, _windKph, _pressureMb, _precipMm, _feelslikeC, _uv;
   final ConditionData _condition;
@@ -89,9 +81,7 @@ class CurrentWeatherData {
   AirQualityData get airQuality => _airQuality;
 }
 
-/*
- * A class to represent forecast day condition data.
- */
+/// A class to represent forecast day condition data.
 class DayConditionData {
   final String? _icon;
 
@@ -100,9 +90,7 @@ class DayConditionData {
   String? get icon => _icon;
 }
 
-/*
- * A class to represent forecast day data.
- */
+/// A class to represent forecast day data.
 class DayData {
   final double? _maxtempC, _mintempC, _totalsnowCm;
   final int? _dailyChanceOfRain;
@@ -118,9 +106,7 @@ class DayData {
   DayConditionData get condition => _condition;
 }
 
-/*
- * A class to represent forecast astro data.
- */
+/// A class to represent forecast astro data.
 class AstroData {
   final String? _sunrise, _sunset;
   final int? _isMoonUp, _isSunUp;
@@ -133,9 +119,7 @@ class AstroData {
   int? get isSunUp => _isSunUp;
 }
 
-/*
- * A class to represent forecast hour data.
- */
+/// A class to represent forecast hour data.
 class HourData {
   final String? _time;
   final double? _tempC;
@@ -148,9 +132,7 @@ class HourData {
   DayConditionData get condition => _condition;
 }
 
-/*
- * A class to represent forecast day data.
- */
+/// A class to represent forecast day data.
 class ForecastDayData {
   final String? _date;
   final DayData _day;
@@ -165,9 +147,7 @@ class ForecastDayData {
   List<HourData> get hour => _hour;
 }
 
-/*
- * A class to represent forecast alerts.
- */
+/// A class to represent forecast alerts.
 class AlertData {
   final String? _headline,
       _msgtype,
@@ -213,9 +193,7 @@ class AlertData {
   String? get instruction => _instruction;
 }
 
-/*
- * A class to represent search results locations.
- */
+/// A class to represent search results locations.
 class LocationResultData {
   final int? _id;
   final String? _name, _region, _country, _url;
