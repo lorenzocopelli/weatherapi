@@ -32,14 +32,14 @@ Get realtime weather by city name:
 
 ```dart
 RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByCityName(cityName);
-debugPrint('Condition: ${realtimeWeather.current.condition.text}');
+print('Condition: ${realtimeWeather.current.condition.text}');
 ```
 
 Get realtime weather by latitude and longitude:
 
 ```dart
 RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByLocation(latitude, longitude);
-debugPrint('Condition: ${realtimeWeather.current.condition.text}');
+print('Condition: ${realtimeWeather.current.condition.text}');
 ```
 
 ## Forecast API
@@ -48,14 +48,14 @@ Get forecast weather by city name.
 
 ```dart
 ForecastWeather forecastWeather = await wr.getForecastWeatherByCityName(cityName);
-debugPrint('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+print('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
 ```
 
 Get forecast weather by latitude and longitude.
 
 ```dart
 ForecastWeather forecastWeather = await wr.getForecastWeatherByLocation(latitude, longitude);
-debugPrint('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+print('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
 ```
 
 ## Search/Autocomplete API.
@@ -64,12 +64,12 @@ Get location results by city name.
 
 ```dart
 SearchResults lr = await wr.getResultsByCityName(cityName);
-debugPrint('First result: ${lr.locations[0].name}');
+print('First result: ${lr.locations[0].name}');
 ```
 
 Get location results by latitude and longitude.
 
 ```dart
 SearchResults lr = await wr.getResultsByLocation(latitude, longitude);
-debugPrint('First result: ${lr.locations[0].name}');
+print('First result: ${lr.locations[0].name}');
 ```
