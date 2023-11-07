@@ -31,15 +31,15 @@ double longitude = 10.33;
 Get realtime weather by city name:
 
 ```dart
-RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByCityName(cityName);
-print('Condition: ${realtimeWeather.current.condition.text}');
+RealtimeWeather rw = await wr.getRealtimeWeatherByCityName(cityName);
+print('Condition: ${rw.current.condition.text}');
 ```
 
 Get realtime weather by latitude and longitude:
 
 ```dart
-RealtimeWeather realtimeWeather = await wr.getRealtimeWeatherByLocation(latitude, longitude);
-print('Condition: ${realtimeWeather.current.condition.text}');
+RealtimeWeather rw = await wr.getRealtimeWeatherByLocation(latitude, longitude);
+print('Condition: ${rw.current.condition.text}');
 ```
 
 ## Forecast API
@@ -47,15 +47,15 @@ print('Condition: ${realtimeWeather.current.condition.text}');
 Get forecast weather by city name.
 
 ```dart
-ForecastWeather forecastWeather = await wr.getForecastWeatherByCityName(cityName);
-print('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+ForecastWeather fw = await wr.getForecastWeatherByCityName(cityName);
+print('Tomorrow sunrise: ${fw.forecast[1].astro.sunrise}');
 ```
 
 Get forecast weather by latitude and longitude.
 
 ```dart
-ForecastWeather forecastWeather = await wr.getForecastWeatherByLocation(latitude, longitude);
-print('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
+ForecastWeather fw = await wr.getForecastWeatherByLocation(latitude, longitude);
+print('Tomorrow sunrise: ${fw.forecast[1].astro.sunrise}');
 ```
 
 ## Search/Autocomplete API.
@@ -63,13 +63,13 @@ print('Tomorrow sunrise: ${forecastWeather.forecast[1].astro.sunrise}');
 Get location results by city name.
 
 ```dart
-SearchResults lr = await wr.getResultsByCityName(cityName);
-print('First result: ${lr.locations[0].name}');
+SearchResults sr = await wr.getResultsByCityName(cityName);
+print('First result: ${sr.locations[0].name}');
 ```
 
 Get location results by latitude and longitude.
 
 ```dart
-SearchResults lr = await wr.getResultsByLocation(latitude, longitude);
-print('First result: ${lr.locations[0].name}');
+SearchResults sr = await wr.getResultsByLocation(latitude, longitude);
+print('First result: ${sr.locations[0].name}');
 ```
