@@ -38,13 +38,13 @@ import 'package:weatherapi/weatherapi.dart';
 
 ...
 
-WeatherRequest wr = new WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 ```
 
 Alternatively, you can also specify a language for the weather results.
 
 ```dart
-WeatherRequest wr = new WeatherRequest("YOUR_API_KEY", language: Language.italian);
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY', language: Language.italian);
 ```
 
 For all the supported languages, see the Languages section.
@@ -58,20 +58,20 @@ Realtime weather API allows a user to get up to date current weather information
 The current weather can be queried either through a city name or through a latitude and longitude.
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 String cityName = 'Parma';
 
-RealtimeWeather w = await wr.currentWeatherByCityName(cityName);
+RealtimeWeather rw = await wr.getRealtimeWeatherByCityName(cityName);
 ```
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 double latitude = 44.8;
 double longitude = 10.33;
 
-RealtimeWeather w = await wr.currentWeatherByLocation(lat, lon);
+RealtimeWeather rw = await wr.getRealtimeWeatherByLocation(latitude, longitude);
 ```
 
 ### Forecast API
@@ -83,20 +83,20 @@ Forecast weather API allows a user to get up to date current weather forecast. T
 The forecast weather can be queried either through a city name or a through latitude and longitude.
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 String cityName = 'Parma';
 
-ForecastWeather f = await wr.forecastWeatherByCityName(cityName);
+ForecastWeather fw = await wr.getForecastWeatherByCityName(cityName);
 ```
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 double latitude = 44.8;
 double longitude = 10.33;
 
-ForecastWeather f = await wr.forecastWeatherByLocation(lat, lon);
+ForecastWeather fw = await wr.getForecastWeatherByLocation(latitude, longitude);
 ```
 
 ### Search/Autocomplete API
@@ -108,24 +108,24 @@ Search/Autocomplete API allows a user to get a list of locations matching a prov
 The results can be queried either through a city name or through a latitude and longitude.
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 String cityName = 'Parma';
 
-SearchResults lr = await wr.getResultsByCityName(cityName);
+SearchResults sr = await wr.getResultsByCityName(cityName);
 
-for (LocationResultData location in lr.locations) { /* ... */ }
+for (LocationResultData location in sr.locations) { /* ... */ }
 ```
 
 ```dart
-WeatherRequest wr = WeatherRequest("YOUR_API_KEY");
+WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 
 double latitude = 44.8;
 double longitude = 10.33;
 
-SearchResults lr = await wr.getResultsByLocation(lat, lon);
+SearchResults sr = await wr.getResultsByLocation(latitude, longitude);
 
-for (LocationResultData location in lr.locations) { /* ... */ }
+for (LocationResultData location in sr.locations) { /* ... */ }
 ```
 
 ### Exceptions
