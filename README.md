@@ -1,4 +1,4 @@
-# weatherapi
+# WeatherAPI
 
 This package uses the [WeatherAPI.com API](https://www.weatherapi.com/) to get weather information.
 
@@ -29,15 +29,15 @@ This package does not require any permissions. However, if you intend to retriev
 
 ## Usage
 
-First you need an API key from WeatherAPI.com, which can be acquired for free [here](https://www.weatherapi.com/signup.aspx/).
+First you need an API key from WeatherAPI.com, which can be acquired for free [here](https://www.weatherapi.com/signup.aspx/). Then, import the library.
+
+```dart
+import 'package:weatherapi/weatherapi.dart';
+```
 
 Next, an instance of a `WeatherRequest` must be created using the obtained API key.
 
 ```dart
-import 'package:weatherapi/weatherapi.dart';
-
-...
-
 WeatherRequest wr = WeatherRequest('YOUR_API_KEY');
 ```
 
