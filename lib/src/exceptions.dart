@@ -1,5 +1,3 @@
-part of weatherapi_library;
-
 /// Custom Exception for the library.
 /// An exception of this type is thrown whenever the API responds with an
 /// error.

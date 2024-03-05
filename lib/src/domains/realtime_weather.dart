@@ -1,4 +1,4 @@
-part of weatherapi_library;
+import 'structures.dart';
 
 /// A class for storing Realtime API response data.
 class RealtimeWeather {

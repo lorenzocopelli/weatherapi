@@ -1,3 +1,8 @@
+## 1.0.3
+
+* Updated Flutter Lints version.
+* Minor changes.
+
 ## 1.0.2
 
 * Code documentation.

@@ -1,5 +1,3 @@
-part of weatherapi_library;
-
 /// A class to represent a location data.
 class LocationData {
   final String? _name, _region, _country, _tzId, _localtime;

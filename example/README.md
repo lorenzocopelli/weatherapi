@@ -58,7 +58,7 @@ ForecastWeather fw = await wr.getForecastWeatherByLocation(latitude, longitude);
 print('Tomorrow sunrise: ${fw.forecast[1].astro.sunrise}');
 ```
 
-## Search/Autocomplete API.
+## Search/Autocomplete API
 
 Get location results by city name.
 

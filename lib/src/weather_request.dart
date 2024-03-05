@@ -1,4 +1,12 @@
-part of weatherapi_library;
+import 'languages.dart';
+import 'constants.dart';
+import 'domains/realtime_weather.dart';
+import 'domains/forecast_weather.dart';
+import 'domains/search_results.dart';
+import 'exceptions.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 /// Types of API calls.
 enum APIType { realtime, forecast, search }
@@ -103,8 +111,7 @@ class WeatherRequest {
       bool alerts = false}) async {
     assert((cityName != null && cityName.isNotEmpty) ||
         (latitude != null && longitude != null));
-    assert(
-        forecastDays >= _minForecastDays && forecastDays <= _maxForecastDays);
+    assert(forecastDays >= minForecastDays && forecastDays <= maxForecastDays);
 
     String url = _buildUrl(apiType, cityName, latitude, longitude,
         airQualityIndex, forecastDays, alerts);
@@ -113,7 +120,7 @@ class WeatherRequest {
     http.Response response = await _httpClient.get(Uri.parse(url));
     dynamic jsonBody = json.decode(response.body);
 
-    if (response.statusCode != _httpStatusOk) {
+    if (response.statusCode != httpStatusOk) {
       throw WeatherAPIException(jsonBody!['error']['message']);
     }
 
@@ -124,14 +131,13 @@ class WeatherRequest {
       double? longitude, bool airQualityIndex, int forecastDays, bool alerts) {
     assert((cityName != null && cityName.isNotEmpty) ||
         (latitude != null && longitude != null));
-    assert(
-        forecastDays >= _minForecastDays && forecastDays <= _maxForecastDays);
+    assert(forecastDays >= minForecastDays && forecastDays <= maxForecastDays);
 
     String url = '${_apiTypeBaseUrls[apiType]}?';
     url += 'key=$_apiKey';
 
     if (language != Language.english) {
-      url += '&lang=${_languageCodes[language]}';
+      url += '&lang=${languageCodes[language]}';
     }
 
     if (cityName != null) {

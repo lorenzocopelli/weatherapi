@@ -1,4 +1,4 @@
-part of weatherapi_library;
+import 'structures.dart';
 
 /// A class for storing Search/Autocomplete API response data.
 class SearchResults {

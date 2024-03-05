@@ -1,5 +1,3 @@
-part of weatherapi_library;
-
 enum Language {
   arabic,
   bengali,
@@ -44,7 +42,7 @@ enum Language {
   zulu
 }
 
-Map<Language, String> _languageCodes = {
+Map<Language, String> languageCodes = {
   Language.arabic: 'ar',
   Language.bengali: 'bn',
   Language.bulgarian: 'bg',
