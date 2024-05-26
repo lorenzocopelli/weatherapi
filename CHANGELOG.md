@@ -1,3 +1,8 @@
+## 1.1.0
+
+* Support for all API response fields.
+* Updated Flutter Lints version.
+
 ## 1.0.3
 
 * Updated Flutter Lints version.

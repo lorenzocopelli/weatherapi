@@ -1,8 +1,13 @@
 /// A class to represent a location data.
 class LocationData {
-  final String? _name, _region, _country, _tzId, _localtime;
-  final double? _lat, _lon;
+  final String? _name;
+  final String? _region;
+  final String? _country;
+  final double? _lat;
+  final double? _lon;
+  final String? _tzId;
   final int? _localtimeEpoch;
+  final String? _localtime;
 
   LocationData(this._name, this._region, this._country, this._lat, this._lon,
       this._tzId, this._localtimeEpoch, this._localtime);
@@ -10,17 +15,23 @@ class LocationData {
   String? get name => _name;
   String? get region => _region;
   String? get country => _country;
-  String? get tzId => _tzId;
-  String? get localtime => _localtime;
   double? get lat => _lat;
   double? get lon => _lon;
+  String? get tzId => _tzId;
   int? get localtimeEpoch => _localtimeEpoch;
+  String? get localtime => _localtime;
 }
 
 /// A class to represent air quality data.
 class AirQualityData {
-  final double? _co, _no2, _o3, _so2, _pm2_5, _pm10;
-  final int? _usEpaIndex, _gbDefraIndex;
+  final double? _co;
+  final double? _no2;
+  final double? _o3;
+  final double? _so2;
+  final double? _pm2_5;
+  final double? _pm10;
+  final int? _usEpaIndex;
+  final int? _gbDefraIndex;
 
   AirQualityData(this._co, this._no2, this._o3, this._so2, this._pm2_5,
       this._pm10, this._usEpaIndex, this._gbDefraIndex);
@@ -37,45 +48,93 @@ class AirQualityData {
 
 /// A class to represent condition data.
 class ConditionData {
-  final String? _text, _icon;
+  final String? _text;
+  final String? _icon;
+  final int? _code;
 
-  ConditionData(this._text, this._icon);
+  ConditionData(this._text, this._icon, this._code);
 
   String? get text => _text;
   String? get icon => _icon;
+  int? get code => _code;
 }
 
 /// A class to represent current weather data.
 class CurrentWeatherData {
-  final double? _tempC, _windKph, _pressureMb, _precipMm, _feelslikeC, _uv;
+  final int? _lastUpdatedEpoch;
+  final String? _lastUpdated;
+  final double? _tempC;
+  final double? _tempF;
+  final int? _isDay;
   final ConditionData _condition;
+  final double? _windMph;
+  final double? _windKph;
+  final int? _windDegree;
   final String? _windDir;
-  final int? _humidity, _cloud;
+  final double? _pressureMb;
+  final double? _pressureIn;
+  final double? _precipMm;
+  final double? _precipIn;
+  final int? _humidity;
+  final int? _cloud;
+  final double? _feelslikeC;
+  final double? _feelslikeF;
+  final double? _visKm;
+  final double? _visMiles;
+  final double? _uv;
+  final double? _gustMph;
+  final double? _gustKph;
   final AirQualityData _airQuality;
 
   CurrentWeatherData(
+      this._lastUpdatedEpoch,
+      this._lastUpdated,
       this._tempC,
+      this._tempF,
+      this._isDay,
       this._condition,
+      this._windMph,
       this._windKph,
+      this._windDegree,
       this._windDir,
       this._pressureMb,
+      this._pressureIn,
       this._precipMm,
+      this._precipIn,
       this._humidity,
       this._cloud,
       this._feelslikeC,
+      this._feelslikeF,
+      this._visKm,
+      this._visMiles,
       this._uv,
+      this._gustMph,
+      this._gustKph,
       this._airQuality);
 
+  int? get lastUpdatedEpoch => _lastUpdatedEpoch;
+  String? get lastUpdated => _lastUpdated;
   double? get tempC => _tempC;
-  double? get windKph => _windKph;
-  double? get pressureMb => _pressureMb;
-  double? get precipMm => _precipMm;
-  double? get feelslikeC => _feelslikeC;
-  double? get uv => _uv;
+  double? get tempF => _tempF;
+  int? get isDay => _isDay;
   ConditionData get condition => _condition;
+  double? get windMph => _windMph;
+  double? get windKph => _windKph;
+  int? get windDegree => _windDegree;
   String? get windDir => _windDir;
+  double? get pressureMb => _pressureMb;
+  double? get pressureIn => _pressureIn;
+  double? get precipMm => _precipMm;
+  double? get precipIn => _precipIn;
   int? get humidity => _humidity;
   int? get cloud => _cloud;
+  double? get feelslikeC => _feelslikeC;
+  double? get feelslikeF => _feelslikeF;
+  double? get visKm => _visKm;
+  double? get visMiles => _visMiles;
+  double? get uv => _uv;
+  double? get gustMph => _gustMph;
+  double? get gustKph => _gustKph;
   AirQualityData get airQuality => _airQuality;
 }
 

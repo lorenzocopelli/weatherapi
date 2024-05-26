@@ -31,7 +31,8 @@ class RealtimeWeather {
 
     ConditionData condition = ConditionData(
         jsonCurrentWeatherCondition?['text'],
-        jsonCurrentWeatherCondition?['icon']);
+        jsonCurrentWeatherCondition?['icon'],
+        jsonCurrentWeatherCondition?['code']);
 
     // -- Air Quality.
 
@@ -49,16 +50,29 @@ class RealtimeWeather {
         jsonCurrentWeatherAirQuality?['gb-defra-index']);
 
     _current = CurrentWeatherData(
+        jsonCurrentWeather?['last_updated_epoch'],
+        jsonCurrentWeather?['last_updated'],
         jsonCurrentWeather?['temp_c'],
+        jsonCurrentWeather?['temp_f'],
+        jsonCurrentWeather?['is_day'],
         condition,
+        jsonCurrentWeather?['wind_mph'],
         jsonCurrentWeather?['wind_kph'],
+        jsonCurrentWeather?['wind_degree'],
         jsonCurrentWeather?['wind_dir'],
         jsonCurrentWeather?['pressure_mb'],
+        jsonCurrentWeather?['pressure_in'],
         jsonCurrentWeather?['precip_mm'],
+        jsonCurrentWeather?['precip_in'],
         jsonCurrentWeather?['humidity'],
         jsonCurrentWeather?['cloud'],
         jsonCurrentWeather?['feelslike_c'],
+        jsonCurrentWeather?['feelslike_f'],
+        jsonCurrentWeather?['vis_km'],
+        jsonCurrentWeather?['vis_miles'],
         jsonCurrentWeather?['uv'],
+        jsonCurrentWeather?['gust_mph'],
+        jsonCurrentWeather?['gust_kph'],
         airQuality);
   }
 
