@@ -96,15 +96,30 @@ class ForecastWeather {
 
       Map<String, dynamic>? jsonDayCondition = jsonDay?['condition'];
 
-      DayConditionData dayCondition =
-          DayConditionData(jsonDayCondition?['icon']);
+      ConditionData dayCondition = ConditionData(jsonDayCondition?['text'],
+          jsonDayCondition?['icon'], jsonDayCondition?['code']);
 
       DayData day = DayData(
           jsonDay?['maxtemp_c'],
+          jsonDay?['maxtemp_f'],
           jsonDay?['mintemp_c'],
+          jsonDay?['mintemp_f'],
+          jsonDay?['avgtemp_c'],
+          jsonDay?['avgtemp_f'],
+          jsonDay?['maxwind_mph'],
+          jsonDay?['maxwind_kph'],
+          jsonDay?['totalprecip_mm'],
+          jsonDay?['totalprecip_in'],
           jsonDay?['totalsnow_cm'],
+          jsonDay?['avgvis_km'],
+          jsonDay?['avgvis_miles'],
+          jsonDay?['avghumidity'],
+          jsonDay?['daily_will_it_rain'],
           jsonDay?['daily_chance_of_rain'],
-          dayCondition);
+          jsonDay?['daily_will_it_snow'],
+          jsonDay?['daily_chance_of_snow'],
+          dayCondition,
+          jsonDay?['uv']);
 
       // --- Astro.
 
@@ -113,6 +128,10 @@ class ForecastWeather {
       AstroData astro = AstroData(
           jsonDayAstro?['sunrise'],
           jsonDayAstro?['sunset'],
+          jsonDayAstro?['moonrise'],
+          jsonDayAstro?['moonset'],
+          jsonDayAstro?['moon_phase'],
+          jsonDayAstro?['moon_illumination'],
           jsonDayAstro?['is_moon_up'],
           jsonDayAstro?['is_sun_up']);
 
@@ -126,17 +145,50 @@ class ForecastWeather {
 
         Map<String, dynamic>? jsonHourCondition = jsonHour['condition'];
 
-        DayConditionData hourCondition =
-            DayConditionData(jsonHourCondition?['icon']);
+        ConditionData hourCondition = ConditionData(jsonHourCondition?['text'],
+            jsonHourCondition?['icon'], jsonHourCondition?['code']);
 
-        HourData hour =
-            HourData(jsonHour['time'], jsonHour['temp_c'], hourCondition);
+        HourData hour = HourData(
+            jsonHour['time_epoch'],
+            jsonHour['time'],
+            jsonHour['temp_c'],
+            jsonHour['temp_f'],
+            jsonHour['is_day'],
+            hourCondition,
+            jsonHour['wind_mph'],
+            jsonHour['wind_kph'],
+            jsonHour['wind_degree'],
+            jsonHour['wind_dir'],
+            jsonHour['pressure_mb'],
+            jsonHour['pressure_in'],
+            jsonHour['precip_mm'],
+            jsonHour['precip_in'],
+            jsonHour['snow_cm'],
+            jsonHour['humidity'],
+            jsonHour['cloud'],
+            jsonHour['feelslike_c'],
+            jsonHour['feelslike_f'],
+            jsonHour['windchill_c'],
+            jsonHour['windchill_f'],
+            jsonHour['heatindex_c'],
+            jsonHour['heatindex_f'],
+            jsonHour['dewpoint_c'],
+            jsonHour['dewpoint_f'],
+            jsonHour['will_it_rain'],
+            jsonHour['chance_of_rain'],
+            jsonHour['will_it_snow'],
+            jsonHour['chance_of_snow'],
+            jsonHour['vis_km'],
+            jsonHour['vis_miles'],
+            jsonHour['gust_mph'],
+            jsonHour['gust_kph'],
+            jsonHour['uv']);
 
         hours.add(hour);
       });
 
-      ForecastDayData forecast =
-          ForecastDayData(jsonForecastDay?['date'], day, astro, hours);
+      ForecastDayData forecast = ForecastDayData(jsonForecastDay?['date'],
+          jsonForecastDay?['date_epoch'], day, astro, hours);
 
       _forecast.add(forecast);
     });
