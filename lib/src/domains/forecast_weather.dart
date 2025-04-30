@@ -2,11 +2,19 @@ import 'structures.dart';
 
 /// A class for storing Forecast API response data.
 class ForecastWeather {
+  /// Location data.
   late final LocationData _location;
+
+  /// Current weather data.
   late final CurrentWeatherData _current;
+
+  /// Forecast day data list.
   late final List<ForecastDayData> _forecast;
+
+  /// Alert data list.
   late final List<AlertData> _alerts;
 
+  /// Class constructor.
   ForecastWeather(Map<String, dynamic> jsonData) {
     // - Location.
 
@@ -72,6 +80,7 @@ class ForecastWeather {
         jsonCurrentWeather?['feelslike_f'],
         jsonCurrentWeather?['vis_km'],
         jsonCurrentWeather?['vis_miles'],
+        // FIX: casts to double to prevent occasional integer values.
         jsonCurrentWeather?['uv']?.toDouble(),
         jsonCurrentWeather?['gust_mph'],
         jsonCurrentWeather?['gust_kph'],
@@ -119,6 +128,7 @@ class ForecastWeather {
           jsonDay?['daily_will_it_snow'],
           jsonDay?['daily_chance_of_snow'],
           dayCondition,
+          // FIX: casts to double to prevent occasional integer values.
           jsonDay?['uv']?.toDouble());
 
       // --- Astro.
@@ -182,6 +192,7 @@ class ForecastWeather {
             jsonHour['vis_miles'],
             jsonHour['gust_mph'],
             jsonHour['gust_kph'],
+            // FIX: casts to double to prevent occasional integer values.
             jsonHour['uv']?.toDouble());
 
         hours.add(hour);
@@ -223,8 +234,15 @@ class ForecastWeather {
     });
   }
 
+  /// Getter for location data.
   LocationData get location => _location;
+
+  /// Getter for current weather data.
   CurrentWeatherData get current => _current;
+
+  /// Getter for forecast day data list.
   List<ForecastDayData> get forecast => _forecast;
+
+  /// Getter for alert data list.
   List<AlertData> get alerts => _alerts;
 }

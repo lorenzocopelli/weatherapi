@@ -1,6 +1,6 @@
 /// A plugin for fetching weather forecasting via WeatherAPI.com.
 
-library weatherapi_library;
+library;
 
 export 'src/exceptions.dart';
 export 'src/languages.dart' hide languageCodes;

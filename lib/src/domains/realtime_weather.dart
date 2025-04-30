@@ -2,9 +2,13 @@ import 'structures.dart';
 
 /// A class for storing Realtime API response data.
 class RealtimeWeather {
+  /// Location data.
   late final LocationData _location;
+
+  /// Current weather data.
   late final CurrentWeatherData _current;
 
+  /// Class constructor.
   RealtimeWeather(Map<String, dynamic> jsonData) {
     // - Location.
 
@@ -70,12 +74,16 @@ class RealtimeWeather {
         jsonCurrentWeather?['feelslike_f'],
         jsonCurrentWeather?['vis_km'],
         jsonCurrentWeather?['vis_miles'],
+        // FIX: casts to double to prevent occasional integer values.
         jsonCurrentWeather?['uv']?.toDouble(),
         jsonCurrentWeather?['gust_mph'],
         jsonCurrentWeather?['gust_kph'],
         airQuality);
   }
 
+  /// Getter for location data.
   LocationData get location => _location;
+
+  /// Getter for current weather data.
   CurrentWeatherData get current => _current;
 }

@@ -2,8 +2,10 @@ import 'structures.dart';
 
 /// A class for storing Search/Autocomplete API response data.
 class SearchResults {
+  /// Locations result data list.
   late final List<LocationResultData> _locations;
 
+  /// Class constructor.
   SearchResults(List<dynamic> jsonData) {
     _locations = [];
 
@@ -21,5 +23,6 @@ class SearchResults {
     }
   }
 
+  /// Getter for location result data list.
   List<LocationResultData> get locations => _locations;
 }

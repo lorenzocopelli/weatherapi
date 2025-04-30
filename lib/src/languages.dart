@@ -1,3 +1,4 @@
+/// Languages supported by API.
 enum Language {
   arabic,
   bengali,
@@ -39,9 +40,10 @@ enum Language {
   wuShanghainese,
   xiang,
   yueCantonese,
-  zulu
+  zulu,
 }
 
+/// Language code map for supported languages.
 Map<Language, String> languageCodes = {
   Language.arabic: 'ar',
   Language.bengali: 'bn',
@@ -82,5 +84,5 @@ Map<Language, String> languageCodes = {
   Language.wuShanghainese: 'zh_wuu',
   Language.xiang: 'zh_hsn',
   Language.yueCantonese: 'zh_yue',
-  Language.zulu: 'zu'
+  Language.zulu: 'zu',
 };
