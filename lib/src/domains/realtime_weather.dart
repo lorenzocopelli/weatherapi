@@ -70,7 +70,7 @@ class RealtimeWeather {
         jsonCurrentWeather?['feelslike_f'],
         jsonCurrentWeather?['vis_km'],
         jsonCurrentWeather?['vis_miles'],
-        jsonCurrentWeather?['uv'],
+        jsonCurrentWeather?['uv']?.toDouble(),
         jsonCurrentWeather?['gust_mph'],
         jsonCurrentWeather?['gust_kph'],
         airQuality);

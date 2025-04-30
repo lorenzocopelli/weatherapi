@@ -72,7 +72,7 @@ class ForecastWeather {
         jsonCurrentWeather?['feelslike_f'],
         jsonCurrentWeather?['vis_km'],
         jsonCurrentWeather?['vis_miles'],
-        jsonCurrentWeather?['uv'],
+        jsonCurrentWeather?['uv']?.toDouble(),
         jsonCurrentWeather?['gust_mph'],
         jsonCurrentWeather?['gust_kph'],
         airQuality);
@@ -119,7 +119,7 @@ class ForecastWeather {
           jsonDay?['daily_will_it_snow'],
           jsonDay?['daily_chance_of_snow'],
           dayCondition,
-          jsonDay?['uv']);
+          jsonDay?['uv']?.toDouble());
 
       // --- Astro.
 
@@ -182,7 +182,7 @@ class ForecastWeather {
             jsonHour['vis_miles'],
             jsonHour['gust_mph'],
             jsonHour['gust_kph'],
-            jsonHour['uv']);
+            jsonHour['uv']?.toDouble());
 
         hours.add(hour);
       });
